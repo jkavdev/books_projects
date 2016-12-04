@@ -8,12 +8,12 @@
         
     <http pattern="/resources/**" security="none"/>
 
-	<http auto-config="true">
-		<intercept-url pattern="/" 			access="ROLE_ANONYMOUS,ROLE_USER"/> 
-		<intercept-url pattern="/login/*" 	access="ROLE_ANONYMOUS,ROLE_USER"/>
-		<intercept-url pattern="/logout" 	access="ROLE_ANONYMOUS,ROLE_USER"/>
-		<intercept-url pattern="/events/" 	access="ROLE_ADMIN"/>
-		<intercept-url pattern="/**" 		access="ROLE_USER" />
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/" 			access="permitAll"/> 
+		<intercept-url pattern="/login/*" 	access="permitAll"/>
+		<intercept-url pattern="/logout" 	access="permitAll"/>
+		<intercept-url pattern="/events/" 	access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/**" 		access="hasRole('ROLE_USER')" />
 		
 		<form-login login-page="/login/form"
 			login-processing-url="/login"
