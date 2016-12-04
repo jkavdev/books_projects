@@ -1,7 +1,6 @@
 package br.com.jkavdev.packtpub.springsecurity.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import br.com.jkavdev.packtpub.springsecurity.dataaccess.CalendarUserDao;
 import br.com.jkavdev.packtpub.springsecurity.domain.CalendarUser;
@@ -12,7 +11,7 @@ import br.com.jkavdev.packtpub.springsecurity.domain.CalendarUser;
  *
  * @author Rob Winch
  */
-@Component
+//@Component
 public class UserContextStub implements UserContext {
     private final CalendarUserDao userService;
     /**
