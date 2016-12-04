@@ -19,7 +19,8 @@
 			login-processing-url="/login"
 			username-parameter="username"
 			password-parameter="password"
-			authentication-failure-url="/login/form?error"/>
+			authentication-failure-url="/login/form?error"
+			default-target-url="/default" />
 			
 		<logout logout-url="/logout"
 			logout-success-url="/login/form?logout"/>
