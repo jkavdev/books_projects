@@ -38,7 +38,8 @@
                 </div>
                 <div id="nav-account" class="nav-collapse pull-right">
                     <ul class="nav">
-
+						<c:url var="logoutUrl" value="/logout"/>
+						<li><a href="${logoutUrl}">Logout</a></li>
                     </ul>
                 </div>
             </div>

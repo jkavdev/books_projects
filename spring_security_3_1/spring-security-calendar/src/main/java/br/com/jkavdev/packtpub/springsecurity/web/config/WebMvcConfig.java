@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
@@ -115,5 +116,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         internalResolver.setPrefix("/WEB-INF/views/");
         internalResolver.setSuffix(".jsp");
         return internalResolver;
+    }
+    
+    public void addViewControllers(ViewControllerRegistry registry){
+    	registry.addViewController("/login/form")
+    	.setViewName("login");
     }
 }
