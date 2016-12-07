@@ -1,19 +1,17 @@
-package br.com.jkavdev.dominespring.loja.controllers;
+package br.com.jkavdev.dominespring.loja.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import br.com.jkavdev.dominespring.loja.config.AppWebConfiguration;
 
 public class ServletSpringMvc extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class[] { JpaConfiguration.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { AppWebConfiguration.class };
+		return new Class[] { AppWebConfiguration.class};
 	}
 
 	@Override
