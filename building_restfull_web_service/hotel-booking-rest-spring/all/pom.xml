@@ -28,12 +28,12 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<configuration>
 					<useTestScope>true</useTestScope>
-					<stopPort>8005</stopPort>
+					<stopPort>8007</stopPort>
 					<stopKey>DIE!</stopKey>
 					<systemProperties>
 						<systemProperty>
 							<name>jetty.port</name>
-							<value>8080</value>
+							<value>8085</value>
 						</systemProperty>
 					</systemProperties>
 				</configuration>
