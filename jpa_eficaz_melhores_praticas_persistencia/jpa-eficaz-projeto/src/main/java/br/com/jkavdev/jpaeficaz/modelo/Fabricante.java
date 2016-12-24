@@ -13,7 +13,8 @@ import javax.persistence.UniqueConstraint;
 @Table(
 		name = "fabricante", 
 		uniqueConstraints = { 
-				@UniqueConstraint(columnNames = { "codigo", "fabricante_nome" }, name = "un_fabricante") 
+				@UniqueConstraint(columnNames = { "codigo", "fabricante_nome" }, name = "un_fabricante"),
+				@UniqueConstraint(columnNames = { "fabricante_nome" }, name = "un_nome")
 		})
 public class Fabricante {
 	
@@ -25,7 +26,6 @@ public class Fabricante {
 	@Column(
 		name = "fabricante_nome",
 		length = 100,
-		unique = true,
 		nullable = false,
 		columnDefinition = "VARCHAR(100)")
 	private String nome;

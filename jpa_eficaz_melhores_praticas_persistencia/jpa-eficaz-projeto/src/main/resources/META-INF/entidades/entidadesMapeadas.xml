@@ -6,5 +6,8 @@
 	
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Musica"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Fabricante"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.ModeloCarro"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Acessorio"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Aluguel"></entity>
 
 </entity-mappings>
