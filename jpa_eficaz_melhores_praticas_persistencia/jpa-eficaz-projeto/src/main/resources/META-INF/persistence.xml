@@ -4,8 +4,10 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
 	<persistence-unit name="jpaEficazPU" transaction-type="RESOURCE_LOCAL">
+	
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>br.com.jkavdev.jpaeficaz.modelo.Musica</class>
+		<mapping-file>/META-INF/entidades/entidadesMapeadas.xml</mapping-file>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
@@ -16,12 +18,14 @@
 			<property name="javax.persistence.jdbc.password" value="123456" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 
 	</persistence-unit>
+	
+	
 
 
 </persistence>
