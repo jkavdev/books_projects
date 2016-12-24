@@ -9,5 +9,11 @@
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.ModeloCarro"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Acessorio"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Aluguel"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Cliente"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Autor"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Tarefa"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.id.CodigoUnico"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Escritor"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.Livro"></entity>
 
 </entity-mappings>
