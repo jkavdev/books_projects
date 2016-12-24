@@ -1,22 +1,19 @@
 package br.com.jkavdev.jpaeficaz.testes;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import br.com.jkavdev.jpaeficaz.modelo.Musica;
+import br.com.jkavdev.jpaeficaz.util.JpaUtil;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpaEficazPU");
-		EntityManager manager = factory.createEntityManager();
-		
+		EntityManager manager = JpaUtil.geEntityManager();
+
 		manager.find(Musica.class, "1");
 
-		manager.close();
-		factory.close();
+		JpaUtil.close();
 
 	}
 
