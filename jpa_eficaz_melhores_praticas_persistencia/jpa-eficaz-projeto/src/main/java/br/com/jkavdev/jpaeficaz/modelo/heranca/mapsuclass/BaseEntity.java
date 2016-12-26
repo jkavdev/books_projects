@@ -1,37 +1,27 @@
-package br.com.jkavdev.jpaeficaz.modelo;
+package br.com.jkavdev.jpaeficaz.modelo.heranca.mapsuclass;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import java.io.Serializable;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Table(name = "escritor")
-public class Escritor {
+@MappedSuperclass
+public class BaseEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer codigo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
 
-	@Column(length = 60)
-	private String nome;
-
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	@Override
@@ -50,7 +40,7 @@ public class Escritor {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Escritor other = (Escritor) obj;
+		BaseEntity other = (BaseEntity) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

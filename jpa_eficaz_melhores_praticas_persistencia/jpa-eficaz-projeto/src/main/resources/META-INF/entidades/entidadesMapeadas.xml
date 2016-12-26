@@ -6,7 +6,7 @@
 	
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Musica"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Fabricante"></entity>
-	<entity class="br.com.jkavdev.jpaeficaz.modelo.ModeloCarro"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.mapsuclass.ModeloCarro"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Acessorio"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Aluguel"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Cliente"></entity>
@@ -15,5 +15,12 @@
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.id.CodigoUnico"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Escritor"></entity>
 	<entity class="br.com.jkavdev.jpaeficaz.modelo.Livro"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.singtable.Funcionario"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.singtable.Motorista"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.joined.PessoaFisica"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.joined.PessoaJuridica"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.tabperlcass.Veiculo"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.tabperlcass.Aviao"></entity>
+	<entity class="br.com.jkavdev.jpaeficaz.modelo.heranca.tabperlcass.Carro"></entity>
 
 </entity-mappings>

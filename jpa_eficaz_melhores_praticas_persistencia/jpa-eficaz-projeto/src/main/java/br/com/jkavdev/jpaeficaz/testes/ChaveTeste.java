@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 import br.com.jkavdev.jpaeficaz.modelo.Acessorio;
 import br.com.jkavdev.jpaeficaz.modelo.Aluguel;
-import br.com.jkavdev.jpaeficaz.modelo.ModeloCarro;
+import br.com.jkavdev.jpaeficaz.modelo.heranca.mapsuclass.ModeloCarro;
 import br.com.jkavdev.jpaeficaz.util.JpaUtil;
 
 public class ChaveTeste {
