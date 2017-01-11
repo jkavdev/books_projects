@@ -1,0 +1,26 @@
+ <!-- Criando um projeto com archetype, no qual já te oferece uma estrutura de projeto já pronta -->
+mvn archetype:generate -DgroupId=br.com.jkavdev.maven -DartifactId=maven-essentials-archetype -Dversion=1.0.0  -Dpackage=br.com.jkavdev.maven.archetype -DinteractiveMode=false -X
+
+<!-- Para realizar o build do projeto rode o programa onde o pom.xml está -->
+mvn clean install
+
+<!-- Para alterar as pastas default do comportamento do maven -->
+<project>	
+	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<outputDirectory>${basedir}/target/classes</outputDirectory>
+	</build>
+</project>
+
+<!-- Habilitando o maven no modo debug durante uma ação qualquer -->
+mvn clean install -X
+
+<!-- Caso ocorra algum problema com as dependências, podemos visualizar a árvore de dependências-->
+mvn dependency:tree
+
+<!-- Visualizando todas as variáveis e propriedades do sistema vinculadas a jvm vinculadas ao projeto maven -->
+mvn help:system
+
+<!-- As configurações padrões de cada projeto estão no effective-pom, para visualiza-lo usamos -->
+mvn help:effective-pom
