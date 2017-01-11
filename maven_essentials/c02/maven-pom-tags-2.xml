@@ -1,0 +1,121 @@
+<!-- Seção que contém os detalhes do dos reports dos plugins -->
+<!-- Exibidos no site gerado pelo maven, qual vem do superPom -->
+<reporting>
+	<outputDirectory>${project.build.directory}/site</outputDirectory>
+</reporting>
+
+<!-- Quando não informamos nenhuma configuração do profiles -->
+<!-- O seguinte comando é executado -->
+<profiles>
+	<profile>
+		<id>release-profile</id>
+		<activation>
+			<property>
+				<name>performRelease</name>
+				<value>true</value>
+			</property>
+		</activation>
+		<build>
+			<plugins>
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<inherited>true</inherited>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<updateReleaseInfo>true</updateReleaseInfo>
+					</configuration>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+</profiles>
+
+<!-- Arquivo pom simples, apenas indicando um repositório -->
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.packt</groupId>
+	<artifactId>sample-one</artifactId>
+	<version>1.0.0</version>
+	<repositories>
+		<repository>
+			<id>wso2-nexus</id>
+			<name>WSO2 internal Repository</name>
+			<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</repository>
+	</repositories>
+</project>
+
+<!-- Visualizando o arquivo effective-pom, no qual teremos as informações do pom padrão 
+	junto com as informações do pom do projeto -->
+mvn help:effective-pom
+
+<!-- visualização do resultado do comando acima -->
+<repositories>
+	<repository>
+		<releases>
+			<enabled>true</enabled>
+			<updatePolicy>daily</updatePolicy>
+			<checksumPolicy>ignore</checksumPolicy>
+		</releases>
+		<id>wso2-nexus</id>
+		<name>WSO2 internal Repository</name>
+		<url>http://maven.wso2.org/nexus/content/groups/wso2-public/</url>
+	</repository>
+	<repository>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+		<id>central</id>
+		<name>Central Repository</name>
+		<url>https://repo.maven.apache.org/maven2</url>
+	</repository>
+</repositories>
+
+<!-- Caso queira sobreescrever qualquer configuração do SuperPom -->
+<!-- Onde alteramos a versão padrao - 2.3.3 para 2.5 -->
+<!-- Para alterarmos qualquer comportamento padrao do maven temos que identificar o componente -->
+<!-- para isso, geralmente identicamos pelo artifactId -->
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.packt</groupId>
+	<artifactId>sample-one</artifactId>
+	<version>1.0.0</version>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project

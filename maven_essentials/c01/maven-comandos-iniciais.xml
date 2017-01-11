@@ -22,5 +22,10 @@ mvn dependency:tree
 <!-- Visualizando todas as variáveis e propriedades do sistema vinculadas a jvm vinculadas ao projeto maven -->
 mvn help:system
 
-<!-- As configurações padrões de cada projeto estão no effective-pom, para visualiza-lo usamos -->
+<!-- As configurações combinadas de padrão com as indicados no pom do projeto estão no effective-pom, para visualiza-lo usamos -->
 mvn help:effective-pom
+
+<!-- Caminho completo de cada dependência indica no pom.xml -->
+mvn dependency:build-classpath
+
+

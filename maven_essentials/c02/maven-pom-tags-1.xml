@@ -1,0 +1,86 @@
+<!-- Arquivos poms mantém um relacionamento de pai e filho -->
+<!-- Por isso o conceito de convenção sobre configuração, onde toda sua configuração default -->
+<!-- fica em um arquivo diferente -->
+<!-- Com isso, um arquivo pom simples, no qual vai herdar todas as configurações de pom pai -->
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.packt</groupId>
+	<artifactId>sample-one</artifactId>
+	<version>1.0.0</version>
+</project>
+
+<!-- SuperPom é o pom pai de todos -->
+<!-- Sua localização -->
+MAVEN_HOME/lib/maven-model-builder-3.3.3.jar
+
+<!-- O Maven Central é o único repositório configurado no SuperPom -->
+<!-- No qual todos os poms irão herdar este repositório -->
+<repositories>
+	<repository>
+		<id>central</id>
+		<name>Central Repository</name>
+		<url>http://repo.maven.apache.org/maven2</url>
+		<layout>default</layout>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+	</repository>
+</repositories>
+
+<!-- PluginRepositories define onde procurar por plugins maven -->
+<!-- Configuração do plugin relacionado com repositório maven -->
+<pluginRepositories>
+	<pluginRepository>
+		<id>central</id>
+		<name>Central Repository</name>
+		<url>http://repo.maven.apache.org/maven2</url>
+		<layout>default</layout>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+		<releases>
+			<updatePolicy>never</updatePolicy>
+		</releases>
+	</pluginRepository>
+</pluginRepositories>
+
+<!-- Build inclui toda a informação para que o projeto seja construído -->
+<build>
+	<directory>${project.basedir}/target</directory>
+	<outputDirectory>${project.build.directory}/classes</outputDirectory>
+	<finalName>${project.artifactId}-${project.version}</finalName>
+	<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+	<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+	<scriptSourceDirectory>${project.basedir}/src/main/scripts</scriptSourceDirectory>
+	<testSourceDirectory>${project.basedir}/src/test/java
+	<resources>
+		<resource>
+			<directory>${project.basedir}/src/main/resources</directory>
+		</resource>
+	</resources>
+	<testResources>
+		<testResource>
+			<directory>${project.basedir}/src/test/resources</directory>
+		</testResource>
+	</testResources>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
