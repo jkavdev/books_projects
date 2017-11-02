@@ -22,6 +22,14 @@ public class JpaTestUtils {
 		JpaUtils.closeEntityManagerFactory();
 	}
 
+	public void beginTransaction() {
+		manager.getTransaction().begin();
+	}
+
+	public void commit() {
+		manager.getTransaction().commit();
+	}
+
 	public EntityManager getManager() {
 		return manager;
 	}

@@ -16,7 +16,7 @@ public class TransactionHandleTest extends JpaTestUtils {
 
 		transaction.begin();
 
-		List<Country> countries = getManager().createQuery("from Country", Country.class).getResultList();
+		List<Country> countries = getManager().createQuery("from Pais", Country.class).getResultList();
 		countries.forEach(System.out::println);
 
 		transaction.commit();

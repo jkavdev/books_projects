@@ -26,7 +26,7 @@
 		<!-- Definicao das propriedades que a implementacao usara -->
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/jpaeficaz?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
+				value="jdbc:mysql://localhost:3306/sakila?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="jkavdev" />
 			<property name="javax.persistence.jdbc.password" value="123456" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
