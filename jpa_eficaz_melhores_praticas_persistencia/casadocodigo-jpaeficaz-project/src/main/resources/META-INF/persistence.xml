@@ -3,18 +3,33 @@
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
+	<!-- Contem todas as informacoes sobre o jpa, entidades, conexao, propriedades extras, etc -->
+	<!-- Indicamos o nome do PU, junto com o tipo de transacao -->
+	<!-- No caso inicial trataremos a transacao manualmente - RESOURCE_LOCAL -->
+	<!-- Mas podemos utilizar JTA - onde o servidor passaria a controlar a transacao -->
 	<persistence-unit name="jpaeficazPU" transaction-type="RESOURCE_LOCAL">
 
+		<!-- Defini a implementacao da JPA, no caso sera o Hibernate -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+		<!-- Define as entidades do sistema -->
+		<!-- Sua definicao nao eh obrigatoria, o hibernate na maioria das vezes, ja realiza -->
+		<!-- a descoberta de entidades no sistema -->
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.Country</class>
+
+		<!-- Defini que todas as entidades precisam estar definidas no persistenceUnit -->
+		<!-- Ignorando todas as entidades que nao estao definidas no arquivo -->
+		<!-- Mantem um controle maior das entidades do sistemas -->
+		<!-- Mas tambem pode dificultar a legibilidade do arquivo caso o sistema tenha muitas entidades -->
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
+		<!-- Definicao das propriedades que a implementacao usara -->
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/sakila?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
+				value="jdbc:mysql://localhost:3306/jpaeficaz?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="jkavdev" />
 			<property name="javax.persistence.jdbc.password" value="123456" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
@@ -22,4 +37,21 @@
 		</properties>
 	</persistence-unit>
 	
+	<persistence-unit name="jpaeficazEnterprisePU" transaction-type="JTA">
+
+		<!-- Defini a implementacao da JPA, no caso sera o Hibernate -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<!-- Definindo o datasource, que no caso sera disponibilizado pelo servidor wildfly -->
+		<jta-data-source>java:jboss/datasources/mysql_sakila</jta-data-source>
+		
+		<!-- Definicao das propriedades que a implementacao usara -->
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+		</properties>
+	</persistence-unit>
+
 </persistence>
