@@ -1,3 +1,5 @@
 target
 /.tern-project
 /.project
+/.settings
+/.classpath
