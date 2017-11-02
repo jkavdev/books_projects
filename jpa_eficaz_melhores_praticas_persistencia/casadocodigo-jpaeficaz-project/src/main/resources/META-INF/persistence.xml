@@ -29,7 +29,7 @@
 				value="jdbc:mysql://localhost:3306/jpaeficaz?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="jkavdev" />
 			<property name="javax.persistence.jdbc.password" value="123456" />
-			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
@@ -37,15 +37,14 @@
 		</properties>
 	</persistence-unit>
 	
+	<!-- Utilizando um diferente persistence unit -->
 	<persistence-unit name="jpaeficazEnterprisePU" transaction-type="JTA">
 
-		<!-- Defini a implementacao da JPA, no caso sera o Hibernate -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- Definindo o datasource, que no caso sera disponibilizado pelo servidor wildfly -->
 		<jta-data-source>java:jboss/datasources/mysql_sakila</jta-data-source>
 		
-		<!-- Definicao das propriedades que a implementacao usara -->
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.show_sql" value="true" />
