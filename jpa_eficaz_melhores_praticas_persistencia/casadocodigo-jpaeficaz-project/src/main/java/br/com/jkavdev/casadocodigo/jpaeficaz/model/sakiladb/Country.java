@@ -1,4 +1,4 @@
-package br.com.jkavdev.casadocodigo.jpaeficaz.model;
+package br.com.jkavdev.casadocodigo.jpaeficaz.model.sakiladb;
 
 import java.util.Date;
 

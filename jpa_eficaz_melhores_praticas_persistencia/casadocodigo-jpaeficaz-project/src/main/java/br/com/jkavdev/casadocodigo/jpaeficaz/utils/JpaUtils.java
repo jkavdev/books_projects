@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class JpaUtils {
 
-	private static final String PERSISTENCE_UNIT = "jpaeficazPU";
+	private final static PersistenceUnitName PERSISTENCE_UNIT = PersistenceUnitName.JPA_EFICAZ_PU;
 
 	// Neste comando Persistence.createEntityManagerFactory("jpaeficazPU")
 	// A JPA fara a leitura do persistence.xml
@@ -19,18 +19,23 @@ public class JpaUtils {
 	// Eh seguro ter o factory como estatico, devido ele ser thread-safe
 	private static EntityManagerFactory factory;
 
-	// Utilizando o threadLocal que definira um entityManager diferente para cada thread diferente
+	// Utilizando o threadLocal que definira um entityManager diferente para cada
+	// thread diferente
 	private static ThreadLocal<EntityManager> threadEntityManager = new ThreadLocal<>();
 
-	private JpaUtils() {
+	public static EntityManager getEntityManager(PersistenceUnitName PERSISTENCE_UNIT) {
+		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT.getPersistenceUnitName());
+		return getEntityManager();
 	}
 
 	public static EntityManager getEntityManager() {
+		
+		EntityManager manager = null;
+		
 		if (factory == null) {
-			factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
+			factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT.getPersistenceUnitName());
+			manager = threadEntityManager.get();
 		}
-
-		EntityManager manager = threadEntityManager.get();
 
 		if (manager == null || !manager.isOpen()) {
 			manager = factory.createEntityManager();

@@ -1,8 +1,11 @@
 package br.com.jkavdev.casadocodigo.jpaeficaz.test.cap1;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.jkavdev.casadocodigo.jpaeficaz.model.Country;
+import br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Autor;
+import br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Pais;
+import br.com.jkavdev.casadocodigo.jpaeficaz.model.sakiladb.Country;
 
 public class EntityTest extends JpaTestUtils {
 
@@ -20,6 +23,28 @@ public class EntityTest extends JpaTestUtils {
 		Country country = new Country("Novo Pais");
 
 		getManager().persist(country);
+	}
+	
+	@Test
+	public void insertCountryInOutro() {
+		beginTransactionOutro();
+		
+		Pais pais = new Pais("Novo Pais");
+		
+		getManagerOutro().persist(pais);
+	}
+	
+	@Test
+	public void insertAutorTest() {
+		Autor jhonatan = new Autor(1, "Jhonatan");
+		beginTransactionOutro();
+		getManager().persist(jhonatan);
+		Autor jhonatanBanco = getManager().find(Autor.class, jhonatan.getId());
+		Assert.assertEquals(jhonatanBanco.getId(), jhonatan.getId());
+		
+		Autor lucas = new Autor(1, "Lucas");
+		beginTransactionOutro();
+		getManager().persist(lucas);
 	}
 
 }

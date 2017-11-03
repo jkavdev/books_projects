@@ -6,7 +6,7 @@ import javax.persistence.EntityTransaction;
 
 import org.junit.Test;
 
-import br.com.jkavdev.casadocodigo.jpaeficaz.model.Country;
+import br.com.jkavdev.casadocodigo.jpaeficaz.model.sakiladb.Country;
 
 public class TransactionHandleTest extends JpaTestUtils {
 

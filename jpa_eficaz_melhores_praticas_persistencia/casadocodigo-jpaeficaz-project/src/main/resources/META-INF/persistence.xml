@@ -15,7 +15,7 @@
 		<!-- Define as entidades do sistema -->
 		<!-- Sua definicao nao eh obrigatoria, o hibernate na maioria das vezes, ja realiza -->
 		<!-- a descoberta de entidades no sistema -->
-		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.Country</class>
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.sakiladb.Country</class>
 
 		<!-- Defini que todas as entidades precisam estar definidas no persistenceUnit -->
 		<!-- Ignorando todas as entidades que nao estao definidas no arquivo -->
@@ -27,6 +27,26 @@
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/sakila?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
+			<property name="javax.persistence.jdbc.user" value="jkavdev" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="jpaeficazOutroPU" transaction-type="RESOURCE_LOCAL">
+
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Pais</class>
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Autor</class>
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/jpaeficaz?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="jkavdev" />
 			<property name="javax.persistence.jdbc.password" value="123456" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
