@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Autor;
+import br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Livro;
 import br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Pais;
+import br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Usuario;
 import br.com.jkavdev.casadocodigo.jpaeficaz.model.sakiladb.Country;
 
 public class EntityTest extends JpaTestUtils {
@@ -24,16 +26,16 @@ public class EntityTest extends JpaTestUtils {
 
 		getManager().persist(country);
 	}
-	
+
 	@Test
 	public void insertCountryInOutro() {
 		beginTransactionOutro();
-		
+
 		Pais pais = new Pais("Novo Pais");
-		
+
 		getManagerOutro().persist(pais);
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void insertAutorTest() {
 		Autor jhonatan = new Autor(1, "Jhonatan");
@@ -41,11 +43,35 @@ public class EntityTest extends JpaTestUtils {
 		getManagerOutro().persist(jhonatan);
 		Autor jhonatanBanco = getManager().find(Autor.class, jhonatan.getId());
 		Assert.assertEquals(jhonatanBanco.getId(), jhonatan.getId());
-		
-		//Erro, inserindo autores com mesmo id
+
+		// Erro, inserindo autores com mesmo id
 		Autor lucas = new Autor(1, "Lucas");
 		beginTransactionOutro();
 		getManagerOutro().persist(lucas);
+	}
+
+	@Test
+	public void insertLivroTest() {
+		beginTransactionOutro();
+		for (int i = 0; i < 21; i++) {
+			getManagerOutro().persist(new Livro());
+		}
+	}
+
+	@Test
+	public void insertLivroPostgresTest() {
+		beginTransactionPostgres();
+		for (int i = 0; i < 32; i++) {
+			getManagerPostgres().persist(new Livro());
+		}
+	}
+
+	@Test
+	public void insertUsuarioOutroTest() {
+		beginTransactionOutro();
+		for (int i = 0; i < 32; i++) {
+			getManagerOutro().persist(new Usuario());
+		}
 	}
 
 }

@@ -41,6 +41,8 @@
 
 		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Pais</class>
 		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Autor</class>
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Livro</class>
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Usuario</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
@@ -49,11 +51,30 @@
 				value="jdbc:mysql://localhost:3306/jpaeficaz?serverTimezone=America/Sao_Paulo&amp;useSSL=false&amp;createDatabaseIfNotExist=true" />
 			<property name="javax.persistence.jdbc.user" value="jkavdev" />
 			<property name="javax.persistence.jdbc.password" value="123456" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="jpaeficazPostgresPU" transaction-type="RESOURCE_LOCAL">
+
+		<class>br.com.jkavdev.casadocodigo.jpaeficaz.model.jpaeficazdb.Livro</class>
+
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:postgresql://localhost:5432/jpaeficaz" />
+			<property name="javax.persistence.jdbc.user" value="jkavdev" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 		</properties>
 	</persistence-unit>
 	

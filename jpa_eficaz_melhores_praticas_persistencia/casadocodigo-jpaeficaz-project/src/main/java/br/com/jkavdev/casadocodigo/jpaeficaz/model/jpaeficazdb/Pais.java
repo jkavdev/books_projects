@@ -15,7 +15,14 @@ import javax.persistence.Table;
 @Table(name = "pais")
 public class Pais {
 
+	// Definicao da chave primaria da entidade
 	@Id
+	// Neste caso a chave sera gerenciada pelo banco de dados
+	// A estrategia usada Identity eh a utilizada pelo Mysql
+	
+	// 1 - jpa persiste o registro
+	// 2 - o banco persiste os dados e gera um id
+	// 3 - jpa recupera este id gerado pelo banco
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "pais_id", columnDefinition = "smallint")
 	private Long id;
