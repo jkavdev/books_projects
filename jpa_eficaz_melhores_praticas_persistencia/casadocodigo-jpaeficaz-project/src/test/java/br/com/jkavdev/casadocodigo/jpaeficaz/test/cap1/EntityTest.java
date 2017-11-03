@@ -34,17 +34,18 @@ public class EntityTest extends JpaTestUtils {
 		getManagerOutro().persist(pais);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void insertAutorTest() {
 		Autor jhonatan = new Autor(1, "Jhonatan");
 		beginTransactionOutro();
-		getManager().persist(jhonatan);
+		getManagerOutro().persist(jhonatan);
 		Autor jhonatanBanco = getManager().find(Autor.class, jhonatan.getId());
 		Assert.assertEquals(jhonatanBanco.getId(), jhonatan.getId());
 		
+		//Erro, inserindo autores com mesmo id
 		Autor lucas = new Autor(1, "Lucas");
 		beginTransactionOutro();
-		getManager().persist(lucas);
+		getManagerOutro().persist(lucas);
 	}
 
 }

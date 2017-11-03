@@ -6,6 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class Autor {
 
+	// Neste caso estamos indicando uma chave primaria 
+	// Que sera gerenciada pela aplicacao
+	// Gerando um trabalho adicional
 	@Id
 	private Integer id;
 
