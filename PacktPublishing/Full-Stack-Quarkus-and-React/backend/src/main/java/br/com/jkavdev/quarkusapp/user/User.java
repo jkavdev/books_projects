@@ -1,5 +1,6 @@
 package br.com.jkavdev.quarkusapp.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,8 +12,8 @@ import java.util.List;
 @Table(name = "users")
 public class User extends PanacheEntity {
 
-    @Column(nullable = false)
-    String name;
+    @Column(unique = true, nullable = false)
+    public String name;
 
     @Column(nullable = false)
     String password;
@@ -32,4 +33,8 @@ public class User extends PanacheEntity {
     @Column(name = "role")
     public List<String> roles;
 
+    @JsonProperty("password")
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

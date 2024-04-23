@@ -1,5 +1,6 @@
 package br.com.jkavdev.quarkusapp.task;
 
+import br.com.jkavdev.quarkusapp.project.Project;
 import br.com.jkavdev.quarkusapp.user.User;
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import jakarta.persistence.*;
@@ -12,17 +13,20 @@ import java.time.ZonedDateTime;
 public class Task extends PanacheEntity {
 
     @Column(nullable = false)
-    String title;
+    public String title;
 
     @Column(length = 100)
-    String description;
+    public String description;
 
-    Integer priority;
+    public Integer priority;
 
     @ManyToOne(optional = false)
     public User user;
 
-    public ZonedDateTime completed;
+    public ZonedDateTime complete;
+
+    @ManyToOne
+    public Project project;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
