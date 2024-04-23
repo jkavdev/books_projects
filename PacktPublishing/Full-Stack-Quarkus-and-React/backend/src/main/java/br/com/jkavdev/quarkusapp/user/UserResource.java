@@ -1,6 +1,7 @@
 package br.com.jkavdev.quarkusapp.user;
 
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -9,6 +10,7 @@ import org.jboss.resteasy.reactive.ResponseStatus;
 import java.util.List;
 
 @Path("/api/v1/users")
+@RolesAllowed("admin")
 public class UserResource {
 
     private final UserService userService;
@@ -43,6 +45,13 @@ public class UserResource {
     public Uni<User> update(@PathParam("id") long id, final User user) {
         user.id = id;
         return userService.update(user);
+    }
+
+    @PUT
+    @Path("self/password")
+    @RolesAllowed("user")
+    public Uni<User> changePassword(final PasswordChange passwordChange) {
+        return userService.changePassword(passwordChange.currentPassword(), passwordChange.newPassword());
     }
 
     @DELETE

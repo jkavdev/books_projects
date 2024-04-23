@@ -36,7 +36,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Jhonatan\",\r\n    \"password\": \"qualquerSenha\"\r\n}",
+									"raw": "{\r\n    \"name\": \"Jhonatan\",\r\n    \"password\": \"qualquerSenha\",\r\n    \"roles\": [\r\n        \"user\"\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -120,7 +120,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/v1/users/0",
+									"raw": "http://localhost:8080/api/v1/users/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -130,7 +130,7 @@
 										"api",
 										"v1",
 										"users",
-										"0"
+										"1"
 									]
 								}
 							},
@@ -257,6 +257,62 @@
 										"v1",
 										"users",
 										"self"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "users - current password",
+							"protocolProfileBehavior": {
+								"strictSSL": false
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tL2lzc3VlciIsInVwbiI6Ikpob25hdGFuIiwiZ3JvdXBzIjpbInVzZXIiXSwiaWF0IjoxNzEzODQyNjgwLCJleHAiOjE3MTM4NDYyODAsImp0aSI6IjUwNWY5YmQ0LTdiNGUtNGU1Ny05NWI5LTY2OTAyZmQ4NDU2OSJ9.ixCjnQWwNGWqRMutcDfe1F_lRYBdYN6h6tD2mOZ_Zav_v3tsCBH49MpBYrSnlvFFAdCEUNdg--Y7U8NkaV0eilsD6QmpehU_lDU1f44G9780pb7463N0b7FpmeHRIb37dyUaeim3buyEfhgOl8BUyYEc4Ok21dlNmXbAM0O0DA2dtrei78VGdhBY1UNNRHYkHJVtb3v5pchI1syyWMvMZ9zjJ34wBZkz9hA28yyqEksVorehGLX6P9qL5sp3zXq2SalBT2ajdV45g6FUrqzKnxhVEYMvRIssuE55RmwvB5zwnFUkzCoa14ppXDvwPNEkRF86Yy-q_9_Nb7DoFcSL_g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currentPassword\": \"qualquerSenha\",\r\n    \"newPassword\": \"qualquerSenha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/self/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"self",
+										"password"
 									]
 								}
 							},
@@ -639,7 +695,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/v1/tasks/0",
+									"raw": "http://localhost:8080/api/v1/tasks/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -649,7 +705,7 @@
 										"api",
 										"v1",
 										"tasks",
-										"0"
+										"1"
 									]
 								}
 							},
@@ -738,6 +794,42 @@
 										"v1",
 										"tasks",
 										"0"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "auth - login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Jhonatan\",\r\n    \"password\": \"qualquerSenha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
 									]
 								}
 							},

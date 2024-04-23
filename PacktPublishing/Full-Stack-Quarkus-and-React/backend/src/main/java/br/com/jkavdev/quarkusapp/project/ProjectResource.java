@@ -2,6 +2,7 @@ package br.com.jkavdev.quarkusapp.project;
 
 import br.com.jkavdev.quarkusapp.user.User;
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -10,6 +11,7 @@ import org.jboss.resteasy.reactive.ResponseStatus;
 import java.util.List;
 
 @Path("/api/v1/projects")
+@RolesAllowed("user")
 public class ProjectResource {
 
     private final ProjectService projectService;
