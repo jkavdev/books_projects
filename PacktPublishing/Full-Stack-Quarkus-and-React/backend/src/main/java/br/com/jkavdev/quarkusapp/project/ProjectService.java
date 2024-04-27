@@ -2,6 +2,7 @@ package br.com.jkavdev.quarkusapp.project;
 
 import br.com.jkavdev.quarkusapp.task.Task;
 import br.com.jkavdev.quarkusapp.user.UserService;
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
 import io.quarkus.security.UnauthorizedException;
 import io.smallrye.mutiny.Uni;
@@ -24,7 +25,7 @@ public class ProjectService {
                 .chain(user -> Project.<Project>findById(id).onItem()
                         .ifNull().failWith(() -> new ObjectNotFoundException(id, "Project"))
                         .onItem().invoke(project -> {
-                            if (!user.equals(project.user)) {
+                            if (!user.id.equals(project.user.id)) {
                                 throw new UnauthorizedException("you are not allowed to update this project");
                             }
                         })
@@ -53,7 +54,8 @@ public class ProjectService {
                 .chain(s -> s.merge(project));
     }
 
-    @WithTransaction
+//    @WithTransaction
+    @WithSession
     public Uni<Void> delete(long id) {
         return findById(id)
                 .chain(p ->

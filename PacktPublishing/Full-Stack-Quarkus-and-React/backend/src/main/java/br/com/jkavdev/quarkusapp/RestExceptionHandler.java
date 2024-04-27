@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.StaleObjectStateException;
 
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -23,13 +24,13 @@ public class RestExceptionHandler implements ExceptionMapper<HibernateException>
                     .entity(exception.getMessage())
                     .build();
         }
-        // TODO: nao funcionou, pois parece que o tipo da excecao retornada eh diferente da especificada
         if (hasExceptionInChain(exception, StaleObjectStateException.class)
                 || hasPostgresErrorCode(exception, PG_UNIQUE_VIOLATION_ERROR)) {
             return Response
                     .status(Response.Status.CONFLICT)
                     .build();
         }
+
         return Response
                 .status(Response.Status.BAD_REQUEST)
                 .entity("\"" + exception.getMessage() + "\"")
@@ -41,8 +42,8 @@ public class RestExceptionHandler implements ExceptionMapper<HibernateException>
     }
 
     private static boolean hasPostgresErrorCode(Throwable throwable, String code) {
-        return getExceptionInChain(throwable, PgException.class)
-                .filter(ex -> Objects.equals(ex.getCode(), code))
+        return getExceptionInChain(throwable, SQLException.class)
+                .filter(ex -> Objects.equals(ex.getSQLState(), code))
                 .isPresent();
     }
 

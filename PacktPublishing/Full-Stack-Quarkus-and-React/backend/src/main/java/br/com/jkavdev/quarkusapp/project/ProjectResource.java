@@ -1,6 +1,5 @@
 package br.com.jkavdev.quarkusapp.project;
 
-import br.com.jkavdev.quarkusapp.user.User;
 import io.smallrye.mutiny.Uni;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;

@@ -62,6 +62,7 @@ public class UserResource {
 
     @GET
     @Path("self")
+    @RolesAllowed("user")
     public Uni<User> getCurrentUser() {
         return userService.getCurrentUser();
     }

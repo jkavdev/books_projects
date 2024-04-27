@@ -18,9 +18,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "POST",
 								"header": [
 									{
@@ -65,9 +62,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -103,9 +97,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -142,9 +133,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "PUT",
 								"header": [
 									{
@@ -190,9 +178,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -230,7 +215,14 @@
 							},
 							"request": {
 								"auth": {
-									"type": "noauth"
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{USER_TOKEN}}",
+											"type": "string"
+										}
+									]
 								},
 								"method": "GET",
 								"header": [
@@ -273,7 +265,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuY29tL2lzc3VlciIsInVwbiI6Ikpob25hdGFuIiwiZ3JvdXBzIjpbInVzZXIiXSwiaWF0IjoxNzEzODQyNjgwLCJleHAiOjE3MTM4NDYyODAsImp0aSI6IjUwNWY5YmQ0LTdiNGUtNGU1Ny05NWI5LTY2OTAyZmQ4NDU2OSJ9.ixCjnQWwNGWqRMutcDfe1F_lRYBdYN6h6tD2mOZ_Zav_v3tsCBH49MpBYrSnlvFFAdCEUNdg--Y7U8NkaV0eilsD6QmpehU_lDU1f44G9780pb7463N0b7FpmeHRIb37dyUaeim3buyEfhgOl8BUyYEc4Ok21dlNmXbAM0O0DA2dtrei78VGdhBY1UNNRHYkHJVtb3v5pchI1syyWMvMZ9zjJ34wBZkz9hA28yyqEksVorehGLX6P9qL5sp3zXq2SalBT2ajdV45g6FUrqzKnxhVEYMvRIssuE55RmwvB5zwnFUkzCoa14ppXDvwPNEkRF86Yy-q_9_Nb7DoFcSL_g",
+											"value": "{{USER_TOKEN}}",
 											"type": "string"
 										}
 									]
@@ -318,6 +310,38 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{ADMIN_TOKEN}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
@@ -329,9 +353,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "POST",
 								"header": [
 									{
@@ -376,9 +397,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -414,9 +432,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -453,9 +468,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "PUT",
 								"header": [
 									{
@@ -501,9 +513,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -534,6 +543,38 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{USER_TOKEN}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
@@ -545,9 +586,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "POST",
 								"header": [
 									{
@@ -592,9 +630,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -630,9 +665,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -669,9 +701,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "PUT",
 								"header": [
 									{
@@ -717,9 +746,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "PUT",
 								"header": [
 									{
@@ -766,9 +792,6 @@
 								"strictSSL": false
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -799,19 +822,82 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{USER_TOKEN}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
 					"name": "auth",
 					"item": [
 						{
-							"name": "auth - login",
+							"name": "auth - login admin",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Jhonatan\",\r\n    \"password\": \"qualquerSenha\"\r\n}",
+									"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "auth - login user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"user\",\r\n    \"password\": \"user\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -836,6 +922,54 @@
 							"response": []
 						}
 					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const clientCredentials = ({id, secret, callback}) => pm.sendRequest(\r",
+							"    {\r",
+							"       url: \"http://localhost:8080/api/v1/auth/login\",\r",
+							"    method: 'POST',\r",
+							"    header: { 'content-type': 'application/json' },\r",
+							"    body: {\r",
+							"        mode:\"raw\",\r",
+							"        raw : {\r",
+							"            name: id,\r",
+							"            password: secret\r",
+							"        }\r",
+							"    }\r",
+							"    }, \r",
+							"    callback\r",
+							");\r",
+							"\r",
+							"clientCredentials({id:\"user\", secret:\"user\", callback:(err, res) => {\r",
+							"  const resultado = res.text();\r",
+							"  console.log(\"USER_TOKEN\", resultado)\r",
+							"  pm.variables.set(\"USER_TOKEN\", resultado);\r",
+							"}});\r",
+							"\r",
+							"clientCredentials({id:\"admin\", secret:\"admin\", callback:(err, res) => {\r",
+							"  const resultado = res.text();\r",
+							"  console.log(\"ADMIN_TOKEN\", resultado)\r",
+							"  pm.variables.set(\"ADMIN_TOKEN\", resultado);\r",
+							"}});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}

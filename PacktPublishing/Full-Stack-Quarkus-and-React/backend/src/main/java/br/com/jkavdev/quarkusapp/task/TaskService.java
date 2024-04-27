@@ -24,7 +24,7 @@ public class TaskService {
                 .chain(user -> Task.<Task>findById(id)
                         .onItem().ifNull().failWith(() -> new ObjectNotFoundException(id, "Task"))
                         .onItem().invoke(task -> {
-                            if (!user.equals(task.user)) {
+                            if (!user.id.equals(task.user.id)) {
                                 throw new UnauthorizedException("you are not allowed to update this project");
                             }
                         })

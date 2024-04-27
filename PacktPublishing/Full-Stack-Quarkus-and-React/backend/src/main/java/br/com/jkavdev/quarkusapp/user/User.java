@@ -37,4 +37,5 @@ public class User extends PanacheEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
