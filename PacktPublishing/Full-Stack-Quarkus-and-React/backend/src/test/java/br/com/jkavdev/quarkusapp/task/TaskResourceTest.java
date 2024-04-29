@@ -151,6 +151,7 @@ class TaskResourceTest {
         adminTask.title = "admins-task";
         adminTask.user = admin;
         adminTask = adminTask.<Task>persistAndFlush().await().indefinitely();
+
         given()
                 .body("{\"title\":\"to-update\"}")
                 .contentType(ContentType.JSON)

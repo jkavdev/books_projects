@@ -1,12 +1,12 @@
 package br.com.jkavdev.quarkusapp.task;
 
 import br.com.jkavdev.quarkusapp.user.UserService;
-import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
+import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
 import io.quarkus.security.UnauthorizedException;
 import io.smallrye.mutiny.Uni;
-import jakarta.enterprise.context.ApplicationScoped;
 import org.hibernate.ObjectNotFoundException;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class TaskService {
                 .chain(user -> Task.find("user", user).list());
     }
 
-    @WithTransaction
+    @ReactiveTransactional
     public Uni<Task> create(final Task task) {
         return userService.getCurrentUser()
                 .chain(user -> {
@@ -45,20 +45,20 @@ public class TaskService {
                 });
     }
 
-    @WithTransaction
+    @ReactiveTransactional
     public Uni<Task> update(final Task task) {
         return findById(task.id)
                 .chain(t -> Task.getSession())
                 .chain(s -> s.merge(task));
     }
 
-    @WithTransaction
+    @ReactiveTransactional
     public Uni<Void> delete(long id) {
         return findById(id)
                 .chain(Task::delete);
     }
 
-    @WithTransaction
+    @ReactiveTransactional
     public Uni<Boolean> setComplete(long id, boolean complete) {
         return findById(id)
                 .chain(task -> {

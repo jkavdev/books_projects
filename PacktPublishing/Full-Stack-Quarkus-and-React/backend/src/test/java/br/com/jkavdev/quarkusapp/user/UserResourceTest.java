@@ -38,14 +38,14 @@ class UserResourceTest {
     void create() {
         // TODO: nao ta funcionando ta dando como se tivessemos cadastrando um usuario que ja existe na base
         RestAssured.given()
-                .body("{\"name\":\"test\",\"password\":\"test\",\"roles\":[\"user\"]}")
+                .body("{\"name\":\"test1\",\"password\":\"test\",\"roles\":[\"user\"]}")
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/api/v1/users")
                 .then()
                 .statusCode(201)
                 .body(
-                        "name", Matchers.is("test"),
+                        "name", Matchers.is("test1"),
                         "password", CoreMatchers.nullValue(),
                         "created", CoreMatchers.not(Matchers.emptyString())
                 );
@@ -80,7 +80,7 @@ class UserResourceTest {
         RestAssured.defaultParser = Parser.JSON;
 
         final var user = RestAssured.given()
-                .body("{\"name\":\"test\",\"password\":\"test\",\"roles\":[\"user\"]}")
+                .body("{\"name\":\"test3\",\"password\":\"test\",\"roles\":[\"user\"]}")
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/api/v1/users")
@@ -132,7 +132,7 @@ class UserResourceTest {
         RestAssured.defaultParser = Parser.JSON;
 
         final var user = RestAssured.given()
-                .body("{\"name\":\"test\",\"password\":\"test\",\"roles\":[\"user\"]}")
+                .body("{\"name\":\"test4\",\"password\":\"test\",\"roles\":[\"user\"]}")
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/api/v1/users")

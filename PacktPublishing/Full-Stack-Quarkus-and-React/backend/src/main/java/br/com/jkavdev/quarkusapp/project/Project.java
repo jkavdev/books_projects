@@ -2,7 +2,7 @@ package br.com.jkavdev.quarkusapp.project;
 
 import br.com.jkavdev.quarkusapp.user.User;
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.ZonedDateTime;
