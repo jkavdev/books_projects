@@ -1,13 +1,14 @@
 package br.com.jkavdev.quarkusapp;
 
 import io.vertx.pgclient.PgException;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.ext.ExceptionMapper;
-import jakarta.ws.rs.ext.Provider;
 import org.hibernate.HibernateException;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.StaleObjectStateException;
+import org.jboss.logging.Logger;
 
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,8 +17,11 @@ import java.util.Optional;
 public class RestExceptionHandler implements ExceptionMapper<HibernateException> {
     private static final String PG_UNIQUE_VIOLATION_ERROR = "23505";
 
+    private static final Logger LOGGER = Logger.getLogger(RestExceptionHandler.class.getName());
+
     @Override
     public Response toResponse(HibernateException exception) {
+        LOGGER.error("ERROR: {}", exception.getMessage(), exception);
         if (hasExceptionInChain(exception, ObjectNotFoundException.class)) {
             return Response
                     .status(Response.Status.NOT_FOUND)
@@ -42,8 +46,8 @@ public class RestExceptionHandler implements ExceptionMapper<HibernateException>
     }
 
     private static boolean hasPostgresErrorCode(Throwable throwable, String code) {
-        return getExceptionInChain(throwable, SQLException.class)
-                .filter(ex -> Objects.equals(ex.getSQLState(), code))
+        return getExceptionInChain(throwable, PgException.class)
+                .filter(ex -> Objects.equals(ex.getCode(), code))
                 .isPresent();
     }
 
